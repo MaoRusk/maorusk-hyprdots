@@ -1,0 +1,10 @@
+#!/bin/bash
+df_output=$(df -h /)
+disk_usage_line=$(echo "$df_output" | grep -E "/$")
+used=$(echo "$disk_usage_line" | awk '{print $3}')
+available=$(echo "$disk_usage_line" | awk '{print $4}')
+used=$(echo "$used" | tr -cd '[:digit:]')
+available=$(echo "$available" | tr -cd '[:digit:]')
+total=$(($used + $available))
+percentage=$(($used * 100 / $total))
+echo "${percentage}"

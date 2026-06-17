@@ -1,0 +1,345 @@
+/* ============================================================================
+ * wifi-manager — CSS Class Reference
+ *
+ * Copy this file to ~/.config/wifi-manager/style.css and customize.
+ * User CSS has FULL override power over the default theme.
+ * Only include the classes you want to change — everything else uses defaults.
+ * ============================================================================ */
+
+/* ── Layout Structure ──────────────────────────────────────────────────────
+ *
+ *  window
+ *   └── .wifi-panel                    Main panel container
+ *       ├── .header                    Header bar
+ *       │   ├── .wifi-toggle           WiFi on/off switch
+ *       │   ├── .status-label          "Connected to X" / "Not connected"
+ *       │   └── .scan-button           Refresh/scan button
+ *       ├── .loading-spinner           Shown while scanning
+ *       ├── .network-scroll            Scrollable area
+ *       │   └── .network-list          ListBox container
+ *       │       ├── .network-row       One per network (also: .connected, .saved)
+ *       │       │   └── .network-row-content   Inner horizontal layout
+ *       │       │       ├── .signal-icon       Signal bars (also: .signal-strong/good/fair/weak)
+ *       │       │       ├── .ssid-label        Network name
+ *       │       │       ├── .band-badge        "5G" badge (5 GHz only)
+ *       │       │       ├── .security-icon     Lock/unlock icon
+ *       │       │       ├── .connected-icon    ✓ checkmark (connected only)
+ *       │       │       ├── .saved-label       "saved" text (saved only)
+ *       │       │       └── .network-menu-btn  ⋮ three-dot menu (saved/connected)
+ *       │       │           └── .network-popover   Forget popover menu
+ *       │       └── .empty-label       "No networks found" placeholder
+ *       └── .password-revealer         Slide-down animation wrapper
+ *           └── .password-section      Password dialog container
+ *               ├── .password-entry    Password input field
+ *               ├── .error-label       Error message text
+ *               └── .password-buttons  Button row
+ *                   ├── .cancel-button
+ *                   └── .connect-button
+ *
+ * ────────────────────────────────────────────────────────────────────────── */
+
+@define-color bg0 #121212;
+@define-color bg1 #111826;
+@define-color bg2 #161f2e;
+@define-color bg3 #1d2738;
+@define-color bg4 #243041;
+
+@define-color red    #f7768e;
+@define-color orange #ff9e64;
+@define-color yellow #e0af68;
+@define-color green  #9ece6a;
+@define-color aqua   #73daca;
+@define-color blue   #7aa2f7;
+@define-color purple #bb9af7;
+
+@define-color fg #F0F0F0;
+
+@define-color grey0 #2a3447;
+@define-color grey1 #3b4661;
+@define-color grey2 #565f89;
+
+/* ── Main Panel ───────────────────────────────────────── */
+
+.wifi-panel {
+    background: alpha(@bg0, 1);
+    border-radius: 8px;
+    /*border: 2px solid @blue;*/
+}
+
+/* ── Header ───────────────────────────────────────────── */
+
+.header {
+    padding: 14px 16px;
+    background: transparent;
+}
+
+.status-label {
+    color: @fg;
+    font-size: 13px;
+}
+
+.scan-button {
+    background: alpha(@bg0, 1);
+    color: @blue;
+    border-radius: 8px;
+}
+
+.wifi-toggle {
+    margin-right: 8px;
+}
+
+/* ── Loading ──────────────────────────────────────────── */
+
+.loading-spinner {
+    color: @blue;
+}
+
+/* ── Network List & Scrollbar ─────────────────────────── */
+
+.network-list {
+    background: transparent;
+}
+
+.network-scroll scrollbar slider {
+    background: transparent;
+    border-radius: 99px;
+    min-width: 4px;
+}
+
+/* ── Network Rows ─────────────────────────────────────── */
+
+.network-row {
+    padding: 10px 16px;
+    margin: 1px 6px;
+    border-radius: 10px;
+}
+
+.network-row:hover {
+    background: transparent;
+    border: 1px solid @blue;
+}
+
+.network-row.connected {
+    background: @bg0;
+    border: 1px solid @green;
+}
+
+.network-row.saved {
+    opacity: 0.85;
+}
+
+/* ── Row Elements ─────────────────────────────────────── */
+
+.ssid-label {
+    color: @fg;
+    font-size: 14px;
+}
+
+.network-row.connected .ssid-label {
+    color: @green;
+    font-weight: 600;
+}
+
+.signal-icon {
+    font-size: 12px;
+    min-width: 20px;
+}
+
+/* Signal strength colors */
+.signal-strong {
+    color: @green;
+}
+.signal-good {
+    color: @yellow;
+}
+.signal-fair {
+    color: @orange;
+}
+.signal-weak {
+    color: @red;
+}
+
+.security-icon {
+    color: @grey2;
+    font-size: 12px;
+}
+
+.band-badge {
+    font-size: 9px;
+    font-weight: 700;
+    color: @blue;
+    background: @bg3;
+    border-radius: 4px;
+}
+
+.connected-icon {
+    color: @green;
+    font-size: 14px;
+}
+
+.saved-label {
+    font-size: 10px;
+    color: @grey2;
+}
+
+/* ── Menu Button & Popover ────────────────────────────── */
+
+.network-menu-btn {
+    color: @grey2;
+    background: none;
+    border: none;
+}
+
+.network-menu-btn:hover {
+    color: @fg;
+    background: @bg3;
+}
+
+.network-popover {
+    background: alpha(@bg0, 1);
+    border-radius: 8px;
+}
+
+/* ── Empty State ─────────────────────────────────────── */
+
+.empty-label {
+    color: @grey2;
+    font-size: 13px;
+    padding: 40px 20px;
+}
+
+/* ── Password Dialog ─────────────────────────────────── */
+
+.password-section {
+    padding: 10px 16px 14px 16px;
+    background: @bg0;
+    border-top: 1px solid @grey0;
+}
+
+.password-entry {
+    background: @bg1;
+    border: 1px solid @grey1;
+    border-radius: 8px;
+    color: @fg;
+}
+
+.password-entry:focus {
+    border-color: @blue;
+}
+
+.connect-button {
+    background: @blue;
+    color: @bg0;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.cancel-button {
+    background: transparent;
+    color: @grey2;
+}
+
+.error-label {
+    color: @red;
+    font-size: 12px;
+}
+
+/* ── Tab Bar ─────────────────────────────────────────── */
+
+.tab-bar {
+    padding: 8px 18px;
+    margin-bottom: 10px;
+}
+
+.tab-button {
+    background: transparent;
+    color: @grey2;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.tab-button:checked {
+    background: @bg0;
+    color: @blue;
+}
+
+/* ── Bluetooth Device List ───────────────────────────── */
+
+.device-list {
+    background: transparent;
+}
+
+.device-scroll scrollbar slider {
+    background: transparent;
+    border-radius: 99px;
+    min-width: 4px;
+}
+
+.device-row {
+    padding: 10px 16px;
+    margin: 1px 6px;
+    border-radius: 10px;
+}
+
+.device-row:hover {
+    background: transparent;
+    border: 1px solid @blue;
+}
+
+.device-row.connected {
+    background: alpha(@bg0, 1);
+    border: 1px solid @green;
+}
+
+.device-name {
+    color: @fg;
+    font-size: 14px;
+}
+
+.device-subtitle {
+    color: @grey2;
+    font-size: 11px;
+}
+
+.device-icon {
+    font-size: 16px;
+    min-width: 24px;
+    color: @grey2;
+}
+
+.trusted-icon {
+    color: @green;
+    font-size: 14px;
+}
+
+.device-menu-btn {
+    color: @grey2;
+    background: none;
+    border: none;
+}
+
+.device-popover {
+    background: @bg1;
+    border: 1px solid @grey0;
+    border-radius: 10px;
+}
+
+/* ── Diálogo de confirmación (apagar / reiniciar / suspender / cerrar sesión) ──
+ *
+ * GtkAlertDialog se muestra como una ventana con clase .dialog (no es .wifi-panel).
+ * Sin fondo aquí, el marco queda transparente sobre el escritorio.
+ * El propio wifi-manager ya estiliza `window.dialog button` en su tema por defecto;
+ * lo importante es dar color sólido al `window.dialog`. */
+
+window.dialog,
+window.background.dialog {
+    background-color: alpha(@bg0, 1);
+    color: @fg;
+    border-radius: 2px;
+}
+
+window.dialog label,
+window.background.dialog label {
+    color: @fg;
+}

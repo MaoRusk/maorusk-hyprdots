@@ -1,0 +1,12 @@
+#!/bin/bash
+# Persistent network monitor - outputs JSON with down/up KB/s every second
+IFACE="wlan0"
+
+while true; do
+    read rx1 tx1 <<< $(awk -v iface="$IFACE:" '$1==iface {print $2, $10}' /proc/net/dev)
+    sleep 1
+    read rx2 tx2 <<< $(awk -v iface="$IFACE:" '$1==iface {print $2, $10}' /proc/net/dev)
+    down=$(( (rx2 - rx1) / 1024 ))
+    up=$(( (tx2 - tx1) / 1024 ))
+    echo "{\"down\": $down, \"up\": $up}"
+done

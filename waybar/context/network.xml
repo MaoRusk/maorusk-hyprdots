@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <menu id="menu">
+    <section>
+      <item>
+        <attribute name="label">WiFi ON</attribute>
+        <attribute name="action">net-wifi-on</attribute>
+      </item>
+      <item>
+        <attribute name="label">WiFi OFF</attribute>
+        <attribute name="action">net-wifi-off</attribute>
+      </item>
+      <item>
+        <attribute name="label">Open WiFi Manager</attribute>
+        <attribute name="action">net-open</attribute>
+      </item>
+    </section>
+  </menu>
+</interface>

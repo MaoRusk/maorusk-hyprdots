@@ -1,0 +1,110 @@
+@import "/home/maorusk/.config/hypr/colors/one-dark.css";
+
+* {
+    border: none;
+    border-radius: 0px;
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: bold;
+    margin: 2px;
+    padding: 0px;
+    /*text-align: center;*/
+}
+
+window#waybar {
+    border-radius: 16px 0px 0px 16px;
+}
+
+#waybar {
+    background: #121212;
+}
+/*
+#modules-left,
+#modules-center,
+#modules-right {
+    margin: 0;
+    padding: 0;
+}
+
+#modules-left > widget,
+#modules-center > widget,
+#modules-right > widget {
+    margin: 0;
+    padding: 0;
+}*/
+#workspaces {
+    background-color: transparent;
+    border-radius: 8px;
+    border: none;
+    color: #f0f0f0;
+}
+
+#workspaces button {
+    color: @grey2;
+    min-width: 25px;
+    transition: all 0.3s ease-in-out;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#workspaces button.active {
+    color: @blue;
+    min-width: 25px;
+    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 8px;
+}
+
+#workspaces button.empty {
+    color: @red;
+    min-width: 25px;
+    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 8px;
+}
+
+#workspaces button:hover {
+    color: @active;
+    background-color: transparent;
+    min-width: 25px;
+    background-size: 400% 400%;
+    font-size: 14px;
+    border-radius: 8px;
+}
+
+#workspaces button.urgent {
+    color: @yellow;
+    min-width: 25px;
+    background-size: 400% 400%;
+    transition: all 0.3s ease-in-out;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+#clock,
+#clock.date,
+#custom-icon-clock,
+#cpu,
+#memory,
+#temperature,
+#battery,
+#pulseaudio,
+#custom-wireless,
+#power-profiles-daemon,
+#cava,
+#workspaces,
+#custom-updates,
+#custom-ctlcenter {
+    margin: 2px;
+    padding: 0px;
+    color: #f0f0f0;
+    min-width: 28px;
+    min-height: 28px;
+}
+
+#custom-icon-clock {
+    padding-right: 2px;
+    /*padding-left: 2px;*/
+}

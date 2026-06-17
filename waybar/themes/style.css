@@ -1,0 +1,121 @@
+@import "/home/maorusk/.config/hypr/colors/one-dark.css";
+
+* {
+    border: none;
+    border-radius: 0px;
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: bold;
+    margin: 1px;
+    padding: 1px;
+}
+
+window#waybar {
+    border-radius: 16px 0px 0px 16px;
+    /* border: 2px solid alpha(@fg, 0.1); */
+}
+
+#waybar {
+    background: alpha(@fg, 0.7);
+    /* background: @bg0; */
+    /* background: transparent; */
+}
+
+#modules-left,
+#modules-center,
+#modules-right {
+    margin: 0;
+    padding: 0;
+}
+
+#modules-left > widget,
+#modules-center > widget,
+#modules-right > widget {
+    margin: 0;
+    padding: 0;
+}
+
+tooltip {
+    background: alpha(@fg, 0.7);
+    border-radius: 8px;
+}
+
+tooltip label {
+    color: @bg0;
+    padding: 6px;
+}
+
+#workspaces {
+    background-color: transparent;
+    border-radius: 8px;
+    border: none;
+    color: @bg0;
+}
+
+
+#workspaces button {
+    color: @grey2;
+    min-width: 25px;
+    transition: all 0.3s ease-in-out;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+#workspaces button.active {
+    color: @blue;
+    min-width: 25px;
+    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+    font-size: 13px;
+    border-radius: 8px;
+}
+
+#workspaces button.empty {
+    color: @yellow;
+    min-width: 25px;
+    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+    font-size: 13px;
+    border-radius: 8px;
+}
+
+#workspaces button:hover {
+    color: @blue;
+    background-color: transparent;
+    min-width: 25px;
+    background-size: 400% 400%;
+    font-size: 13px;
+    border-radius: 8px;
+}
+
+#workspaces button.urgent {
+    color: @red;
+    min-width: 25px;
+    background-size: 400% 400%;
+    transition: all 0.3s ease-in-out;
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+#clock,
+#cpu,
+#memory,
+#temperature,
+#battery,
+#pulseaudio,
+#custom-wireless,
+#power-profiles-daemon,
+#cava,
+#workspaces,
+#custom-updates,
+#custom-ctlcenter {
+    margin: 2px;
+    padding: 2px;
+    color: @bg0;
+    min-width: 28px;
+    min-height: 28px;
+}
+
+#cpu {
+    padding-right: 8px;
+}

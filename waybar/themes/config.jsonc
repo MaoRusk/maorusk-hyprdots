@@ -1,0 +1,121 @@
+{
+    "layer": "top",
+    "position": "left",
+    "margin-top": 8,
+    "margin-bottom": 8,
+    "margin-left": 8,
+    "margin-right": 1,
+    "modules-left": [
+        "custom/ctlcenter",
+        "custom/wireless",
+        "custom/updates",
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "power-profiles-daemon",
+        // "cpu",
+        // "pulseaudio",
+        "battery"
+    ],
+    "custom/ctlcenter": {
+        "format": "{icon}",
+        "format-icons": {
+            "none": "",
+            "notification": "󱅫",
+            "dnd-none": "󰂛",
+            "dnd-notification": "󰂛"
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true,
+        "tooltip": false
+    },
+    "custom/wireless": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "wifi-manager --toggle"
+    },
+    "custom/updates": {
+        "exec": "~/.config/waybar/scripts/updates-json.sh",
+        "return-type": "json",
+        "interval": 60,
+        "tooltip": false,
+        "on-click": "kitty --class floating-terminal -e ~/.config/hypr/scripts/install-updates.sh"
+    },
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "format-icons": {
+            "urgent": "",
+            "active": "",
+            "default": ""
+        },
+        "sort-by-number": true
+        // "all-outputs": true
+    },
+    "clock": {
+        "interval": 60,
+        "tooltip": true,
+        "format": "{:%H\n%M}",
+        "tooltip-format": "{:%H:%M | %m-%d}"
+    },
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "performance": "",
+            "balanced": " ",
+            "power-saver": "󰌪"
+        }
+    },
+    "pulseaudio": {
+        "format": "{icon}",
+        "format-bluetooth": "{icon}",
+        "format-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "phone-muted": "",
+            "portable": "",
+            "car": "",
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        },
+        "tooltip": true,
+        "tooltip-format": "{volume}%",
+        "scroll-step": 1,
+        "on-click": "pavucontrol"
+    },
+    "cpu": {
+        "interval": 1,
+        "format-alt": "{usage}%",
+        "format": "{icon}",
+        "format-icons": {
+           "default": ""
+        },
+        "tooltip": true
+    },
+    "battery": {
+        "bat": "BAT0",
+        "interval": 60,
+        "tooltip": true,
+        "tooltip-format": "{capacity}%",
+        "format": "{icon}",
+        "format-icons": {
+            "default": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+            "charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"]
+        }
+    }
+}
